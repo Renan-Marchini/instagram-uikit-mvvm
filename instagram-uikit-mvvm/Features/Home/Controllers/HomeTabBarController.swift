@@ -15,7 +15,7 @@ class HomeTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemMint
+        
     }
 
 
@@ -26,6 +26,14 @@ class HomeTabBarController: UITabBarController {
 extension HomeTabBarController: ViewCode {
     func buildHierarchy() {
         
+    }
+
+    func configViews() {
+        view.backgroundColor = .white
+
+        let feed = FeedController()
+
+        viewControllers = [ feed ]
     }
     
     func setupConstrains() {
