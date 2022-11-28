@@ -15,7 +15,7 @@ class HomeTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        applyViewCode()
     }
 
 

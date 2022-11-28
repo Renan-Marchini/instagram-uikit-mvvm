@@ -15,7 +15,7 @@ class FeedController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        applyViewCode()
     }
 }
 
@@ -25,7 +25,11 @@ extension FeedController: ViewCode {
     func buildHierarchy() {
         
     }
-    
+
+    func configViews() {
+        view.backgroundColor = .systemBlue
+    }
+
     func setupConstrains() {
         
     }
