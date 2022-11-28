@@ -31,12 +31,36 @@ extension HomeTabBarController: ViewCode {
     func configViews() {
         view.backgroundColor = .white
 
-        let feed = FeedController()
+        let feed = buildNavigationController(
+            rootController: FeedController(),
+            image: UIImage(named: "home_unselected"),
+            selectedImage: UIImage(named: "home_selected")
+        )
 
         viewControllers = [ feed ]
+
+        tabBar.tintColor = .black
     }
     
     func setupConstrains() {
         
+    }
+}
+
+// MARK: - Builders
+
+extension HomeTabBarController {
+    private func buildNavigationController(
+        rootController: UIViewController,
+        image: UIImage?,
+        selectedImage: UIImage?
+    ) -> UINavigationController {
+        let nav = UINavigationController(
+            rootViewController: rootController
+        )
+        nav.tabBarItem.image = image
+        nav.tabBarItem.selectedImage = selectedImage
+        nav.navigationBar.tintColor = .black
+        return nav
     }
 }
