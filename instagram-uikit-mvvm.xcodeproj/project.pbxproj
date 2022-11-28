@@ -12,6 +12,7 @@
 		24BBDA4C29355833000938AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBDA4B29355833000938AA /* ViewController.swift */; };
 		24BBDA5129355835000938AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24BBDA5029355835000938AA /* Assets.xcassets */; };
 		24BBDA5429355835000938AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24BBDA5229355835000938AA /* LaunchScreen.storyboard */; };
+		24BBDA5F29355D4F000938AA /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBDA5E29355D4F000938AA /* ViewCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		24BBDA5029355835000938AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24BBDA5329355835000938AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24BBDA5529355835000938AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24BBDA5E29355D4F000938AA /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		24BBDA4629355833000938AA /* instagram-uikit-mvvm */ = {
 			isa = PBXGroup;
 			children = (
+				24BBDA5B29355CEA000938AA /* Utils */,
 				24BBDA4729355833000938AA /* AppDelegate.swift */,
 				24BBDA4929355833000938AA /* SceneDelegate.swift */,
 				24BBDA4B29355833000938AA /* ViewController.swift */,
@@ -62,6 +65,22 @@
 				24BBDA5529355835000938AA /* Info.plist */,
 			);
 			path = "instagram-uikit-mvvm";
+			sourceTree = "<group>";
+		};
+		24BBDA5B29355CEA000938AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				24BBDA5C29355CFC000938AA /* View Code */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		24BBDA5C29355CFC000938AA /* View Code */ = {
+			isa = PBXGroup;
+			children = (
+				24BBDA5E29355D4F000938AA /* ViewCode.swift */,
+			);
+			path = "View Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24BBDA4C29355833000938AA /* ViewController.swift in Sources */,
+				24BBDA5F29355D4F000938AA /* ViewCode.swift in Sources */,
 				24BBDA4829355833000938AA /* AppDelegate.swift in Sources */,
 				24BBDA4A29355833000938AA /* SceneDelegate.swift in Sources */,
 			);
