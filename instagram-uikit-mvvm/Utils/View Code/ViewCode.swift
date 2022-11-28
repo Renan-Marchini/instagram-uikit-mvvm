@@ -19,7 +19,7 @@ protocol ViewCode {
 
 extension ViewCode {
     func configViews() {}
-    func applyViewCode() {
+    func setupUI() {
         buildHierarchy()
         configViews()
         setupConstrains()
