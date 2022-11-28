@@ -56,10 +56,10 @@
 		24BBDA4629355833000938AA /* instagram-uikit-mvvm */ = {
 			isa = PBXGroup;
 			children = (
+				24BBDA6029356C9F000938AA /* Features */,
 				24BBDA5B29355CEA000938AA /* Utils */,
 				24BBDA4729355833000938AA /* AppDelegate.swift */,
 				24BBDA4929355833000938AA /* SceneDelegate.swift */,
-				24BBDA4B29355833000938AA /* HomeTabBarController.swift */,
 				24BBDA5029355835000938AA /* Assets.xcassets */,
 				24BBDA5229355835000938AA /* LaunchScreen.storyboard */,
 				24BBDA5529355835000938AA /* Info.plist */,
@@ -81,6 +81,30 @@
 				24BBDA5E29355D4F000938AA /* ViewCode.swift */,
 			);
 			path = "View Code";
+			sourceTree = "<group>";
+		};
+		24BBDA6029356C9F000938AA /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				24BBDA6129356CA3000938AA /* Home */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		24BBDA6129356CA3000938AA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				24BBDA6229356CAF000938AA /* Controllers */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		24BBDA6229356CAF000938AA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24BBDA4B29355833000938AA /* HomeTabBarController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
