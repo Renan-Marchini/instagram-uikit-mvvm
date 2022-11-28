@@ -15,7 +15,7 @@ class FeedController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyViewCode()
+        setupUI()
     }
 }
 
