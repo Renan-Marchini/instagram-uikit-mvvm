@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
 
         /// 2. Create view hierarchy programmatically
-        let rootViewController = ViewController()
+        let rootViewController = HomeTabBarController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
 
         /// 3. Set the window and call makeKeyAndVisible
