@@ -21,3 +21,14 @@ class HomeTabBarController: UITableViewController {
 
 }
 
+// MARK: - View Code
+
+extension HomeTabBarController: ViewCode {
+    func buildHierarchy() {
+        
+    }
+    
+    func setupConstrains() {
+        
+    }
+}
