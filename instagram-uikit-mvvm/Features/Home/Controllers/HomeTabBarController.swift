@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - HomeTabBarController
 
-class HomeTabBarController: UITableViewController {
+class HomeTabBarController: UITabBarController {
 
     // MARK: - Life Cycle
 
