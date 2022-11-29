@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - FeedController
 
-class FeedController: UIViewController {
+class FeedController: UICollectionViewController {
 
     // MARK: - Life Cycle
 
@@ -27,7 +27,7 @@ extension FeedController: ViewCode {
     }
 
     func configViews() {
-        view.backgroundColor = .systemBlue
+        collectionView.backgroundColor = .white
     }
 
     func setupConstrains() {
