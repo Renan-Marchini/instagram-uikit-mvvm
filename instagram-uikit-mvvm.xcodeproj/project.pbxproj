@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246028DF2936ADB800F9B1C8 /* FeedCell.swift */; };
+		246028E32936B26900F9B1C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 246028E22936B26900F9B1C8 /* SnapKit */; };
 		24B39CB8293626C50049C250 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CB7293626C50049C250 /* SearchController.swift */; };
 		24B39CC12936313C0049C250 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CC02936313C0049C250 /* ImageSelectorController.swift */; };
 		24B39CC3293632FC0049C250 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CC2293632FC0049C250 /* NotificationsController.swift */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246028E32936B26900F9B1C8 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +231,9 @@
 			dependencies = (
 			);
 			name = "instagram-uikit-mvvm";
+			packageProductDependencies = (
+				246028E22936B26900F9B1C8 /* SnapKit */,
+			);
 			productName = "instagram-uikit-mvvm";
 			productReference = 24BBDA4429355833000938AA /* instagram-uikit-mvvm.app */;
 			productType = "com.apple.product-type.application";
@@ -257,6 +262,9 @@
 				Base,
 			);
 			mainGroup = 24BBDA3B29355833000938AA;
+			packageReferences = (
+				246028E12936B26900F9B1C8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 24BBDA4529355833000938AA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -498,6 +506,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		246028E12936B26900F9B1C8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit#installation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		246028E22936B26900F9B1C8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 246028E12936B26900F9B1C8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 24BBDA3C29355833000938AA /* Project object */;
 }
