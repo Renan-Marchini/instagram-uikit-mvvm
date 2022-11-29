@@ -39,8 +39,29 @@ extension HomeTabBarController: ViewCode {
             image: UIImage(named: "search_unselected"),
             selectedImage: UIImage(named: "search_selected")
         )
+        let imageSelector = buildNavigationController(
+            rootController: ImageSelectorController(),
+            image: UIImage(named: "plus_unselected"),
+            selectedImage: UIImage(named: "plus_unselected")
+        )
+        let notifications = buildNavigationController(
+            rootController: NotificationsController(),
+            image: UIImage(named: "like_unselected"),
+            selectedImage: UIImage(named: "like_selected")
+        )
+        let profile = buildNavigationController(
+            rootController: ProfileController(),
+            image: UIImage(named: "profile_unselected"),
+            selectedImage: UIImage(named: "profile_selected")
+        )
 
-        viewControllers = [ feed, search ]
+        viewControllers = [
+            feed,
+            search ,
+            imageSelector,
+            notifications,
+            profile
+        ]
 
         tabBar.backgroundColor = .white
         tabBar.tintColor = .black
