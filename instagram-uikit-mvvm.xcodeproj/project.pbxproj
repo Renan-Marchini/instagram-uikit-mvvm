@@ -57,6 +57,51 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		24B39CB9293630D10049C250 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				24B39CBA293630D60049C250 /* Controllers */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		24B39CBA293630D60049C250 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		24B39CBB293630DE0049C250 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				24B39CBC293630E30049C250 /* Controllers */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		24B39CBC293630E30049C250 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		24B39CBD293630EC0049C250 /* ImageSelector */ = {
+			isa = PBXGroup;
+			children = (
+				24B39CBE293630F30049C250 /* Controllers */,
+			);
+			path = ImageSelector;
+			sourceTree = "<group>";
+		};
+		24B39CBE293630F30049C250 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		24BBDA3B29355833000938AA = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +153,9 @@
 			children = (
 				24BBDA6329356E53000938AA /* Feed */,
 				24B39CB5293626A80049C250 /* Search */,
+				24B39CBD293630EC0049C250 /* ImageSelector */,
+				24B39CBB293630DE0049C250 /* Notifications */,
+				24B39CB9293630D10049C250 /* Profile */,
 				24BBDA6129356CA3000938AA /* Home */,
 			);
 			path = Features;
