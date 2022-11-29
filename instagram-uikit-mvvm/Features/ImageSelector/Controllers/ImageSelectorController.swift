@@ -27,7 +27,7 @@ extension ImageSelectorController: ViewCode {
     }
 
     func configViews() {
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemPurple
     }
 
     func setupConstrains() {

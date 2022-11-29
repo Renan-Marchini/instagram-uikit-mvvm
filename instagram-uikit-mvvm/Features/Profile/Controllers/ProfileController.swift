@@ -27,7 +27,7 @@ extension ProfileController: ViewCode {
     }
 
     func configViews() {
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemOrange
     }
 
     func setupConstrains() {

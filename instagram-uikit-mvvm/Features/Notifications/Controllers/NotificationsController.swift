@@ -27,7 +27,7 @@ extension NotificationsController: ViewCode {
     }
 
     func configViews() {
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemPink
     }
 
     func setupConstrains() {
