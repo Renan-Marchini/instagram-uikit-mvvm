@@ -29,15 +29,18 @@ extension HomeTabBarController: ViewCode {
     }
 
     func configViews() {
-        view.backgroundColor = .white
-
         let feed = buildNavigationController(
             rootController: FeedController(),
             image: UIImage(named: "home_unselected"),
             selectedImage: UIImage(named: "home_selected")
         )
+        let search = buildNavigationController(
+            rootController: SearchController(),
+            image: UIImage(named: "search_unselected"),
+            selectedImage: UIImage(named: "search_selected")
+        )
 
-        viewControllers = [ feed ]
+        viewControllers = [ feed, search ]
 
         tabBar.tintColor = .black
     }

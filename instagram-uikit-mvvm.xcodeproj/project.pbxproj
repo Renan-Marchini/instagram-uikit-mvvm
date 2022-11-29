@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B39CB8293626C50049C250 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CB7293626C50049C250 /* SearchController.swift */; };
 		24BBDA4829355833000938AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBDA4729355833000938AA /* AppDelegate.swift */; };
 		24BBDA4A29355833000938AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBDA4929355833000938AA /* SceneDelegate.swift */; };
 		24BBDA4C29355833000938AA /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBDA4B29355833000938AA /* HomeTabBarController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B39CB7293626C50049C250 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		24BBDA4429355833000938AA /* instagram-uikit-mvvm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "instagram-uikit-mvvm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BBDA4729355833000938AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24BBDA4929355833000938AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24B39CB5293626A80049C250 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				24B39CB6293626AD0049C250 /* Controllers */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		24B39CB6293626AD0049C250 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24B39CB7293626C50049C250 /* SearchController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		24BBDA3B29355833000938AA = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				24BBDA6329356E53000938AA /* Feed */,
+				24B39CB5293626A80049C250 /* Search */,
 				24BBDA6129356CA3000938AA /* Home */,
 			);
 			path = Features;
@@ -197,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24BBDA4C29355833000938AA /* HomeTabBarController.swift in Sources */,
+				24B39CB8293626C50049C250 /* SearchController.swift in Sources */,
 				24BBDA5F29355D4F000938AA /* ViewCode.swift in Sources */,
 				24BBDA6629356E69000938AA /* FeedController.swift in Sources */,
 				24BBDA4829355833000938AA /* AppDelegate.swift in Sources */,
