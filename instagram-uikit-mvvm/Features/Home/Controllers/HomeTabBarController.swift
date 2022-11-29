@@ -42,6 +42,7 @@ extension HomeTabBarController: ViewCode {
 
         viewControllers = [ feed, search ]
 
+        tabBar.backgroundColor = .white
         tabBar.tintColor = .black
     }
     
