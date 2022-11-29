@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246028DF2936ADB800F9B1C8 /* FeedCell.swift */; };
 		24B39CB8293626C50049C250 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CB7293626C50049C250 /* SearchController.swift */; };
 		24B39CC12936313C0049C250 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CC02936313C0049C250 /* ImageSelectorController.swift */; };
 		24B39CC3293632FC0049C250 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CC2293632FC0049C250 /* NotificationsController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		246028DF2936ADB800F9B1C8 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		24B39CB7293626C50049C250 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		24B39CC02936313C0049C250 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
 		24B39CC2293632FC0049C250 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		246028DE2936ADA700F9B1C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				246028DF2936ADB800F9B1C8 /* FeedCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		24B39CB5293626A80049C250 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 		24BBDA6329356E53000938AA /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				246028DE2936ADA700F9B1C8 /* Views */,
 				24BBDA6429356E58000938AA /* Controllers */,
 			);
 			path = Feed;
@@ -273,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24BBDA4C29355833000938AA /* HomeTabBarController.swift in Sources */,
+				246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */,
 				24B39CC12936313C0049C250 /* ImageSelectorController.swift in Sources */,
 				24B39CB8293626C50049C250 /* SearchController.swift in Sources */,
 				24BBDA5F29355D4F000938AA /* ViewCode.swift in Sources */,
