@@ -11,6 +11,10 @@ import UIKit
 
 class FeedController: UICollectionViewController {
 
+    // MARK: - Properties
+
+    let reuseIdentifier = "Cell"
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -28,6 +32,7 @@ extension FeedController: ViewCode {
 
     func configViews() {
         collectionView.backgroundColor = .white
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     func setupConstrains() {
