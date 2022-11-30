@@ -15,6 +15,7 @@ class FeedCell: UICollectionViewCell {
     // MARK: - Dimensions
 
     private enum Dimension {
+        static let postImageOffset = 8.0
         static let profileImageSize = 40.0
         static let profileImageOffset = 12.0
         static let usernameButtonFontSize = 13.0
@@ -23,14 +24,8 @@ class FeedCell: UICollectionViewCell {
 
     // MARK: - Properties
 
-    private lazy var profileImage: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.isUserInteractionEnabled = true
-        iv.image = UIImage(named: "iron-profile")
-        return iv
-    }()
+    private lazy var postImageView = buildImageView(with: UIImage(named: "iron-post"))
+    private lazy var profileImageView = buildImageView(with: UIImage(named: "iron-profile"))
 
     private lazy var usernameButton: UIButton = {
         let btn = UIButton(type: .system)
@@ -59,34 +54,56 @@ class FeedCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Builders
+
+extension FeedCell {
+    private func buildImageView(with image: UIImage?) -> UIImageView {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.isUserInteractionEnabled = true
+        iv.image = image
+        return iv
+    }
+}
+
 // MARK: - View Code
 
 extension FeedCell: ViewCode {
     func buildHierarchy() {
-        addSubview(profileImage)
+        addSubview(postImageView)
+        addSubview(profileImageView)
         addSubview(usernameButton)
     }
 
     func configViews() {
         backgroundColor = .systemCyan
 
-        profileImage.layer.cornerRadius = Dimension.profileImageSize / 2
+        profileImageView.layer.cornerRadius = Dimension.profileImageSize / 2
     }
     
     func setupConstrains() {
-        profileImage.snp.makeConstraints { make in
+        postImageView.snp.makeConstraints { make in
+            make.top
+                .equalTo(profileImageView.snp.bottom)
+                .offset(Dimension.postImageOffset)
+            make.width
+                .equalToSuperview()
+            make.height.equalTo(postImageView.snp.width)
+        }
+        profileImageView.snp.makeConstraints { make in
             make.top
                 .left
                 .equalToSuperview()
-                .offset(Dimension.profileImageOffiset)
+                .offset(Dimension.profileImageOffset)
             make.height
                 .width
                 .equalTo(Dimension.profileImageSize)
         }
         usernameButton.snp.makeConstraints { make in
-            make.centerY.equalTo(profileImage)
+            make.centerY.equalTo(profileImageView)
             make.left
-                .equalTo(profileImage.snp.right)
+                .equalTo(profileImageView.snp.right)
                 .offset(Dimension.usernameButtonOffset)
         }
     }
