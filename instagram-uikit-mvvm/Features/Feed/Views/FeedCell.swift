@@ -16,7 +16,9 @@ class FeedCell: UICollectionViewCell {
 
     private enum Dimension {
         static let profileImageSize = 40.0
-        static let profileImageOffiset = 12
+        static let profileImageOffset = 12.0
+        static let usernameButtonFontSize = 13.0
+        static let usernameButtonOffset = 8.0
     }
 
     // MARK: - Properties
@@ -30,6 +32,15 @@ class FeedCell: UICollectionViewCell {
         return iv
     }()
 
+    private lazy var usernameButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Tony Stark", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .boldSystemFont(ofSize: Dimension.usernameButtonFontSize)
+        btn.addTarget(self, action: #selector(usernameTapped), for: .touchUpInside)
+        return btn
+    }()
+
     // MARK: - Life Time
 
     override init(frame: CGRect) {
@@ -40,6 +51,12 @@ class FeedCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Actions
+
+    @objc private func usernameTapped() {
+        print("DEBUG - usernameTapped <<<<<<<")
+    }
 }
 
 // MARK: - View Code
@@ -47,6 +64,7 @@ class FeedCell: UICollectionViewCell {
 extension FeedCell: ViewCode {
     func buildHierarchy() {
         addSubview(profileImage)
+        addSubview(usernameButton)
     }
 
     func configViews() {
@@ -64,6 +82,12 @@ extension FeedCell: ViewCode {
             make.height
                 .width
                 .equalTo(Dimension.profileImageSize)
+        }
+        usernameButton.snp.makeConstraints { make in
+            make.centerY.equalTo(profileImage)
+            make.left
+                .equalTo(profileImage.snp.right)
+                .offset(Dimension.usernameButtonOffset)
         }
     }
 }
