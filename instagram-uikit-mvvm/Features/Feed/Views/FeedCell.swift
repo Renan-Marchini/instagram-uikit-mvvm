@@ -154,7 +154,7 @@ extension FeedCell: ViewCode {
             make.width
                 .centerX
                 .equalToSuperview()
-            make.height.equalTo(contentView.frame.width)
+            make.height.equalTo(postImageView.snp.width)
         }
         profileImageView.snp.makeConstraints { make in
             make.top
