@@ -15,9 +15,14 @@ class FeedCell: UICollectionViewCell {
     // MARK: - Dimensions
 
     private enum Dimension {
+        static let captionLabelOffset = 8.0
+        static let defaultLabelSize = 12.0
         static let interactionStackHeight = 50.0
         static let interactionStackWidth = 120.0
+        static let likesLabelVerticalOffset = -4.0
+        static let likesLabelHorizontalOffset = 8.0
         static let postImageOffset = 8.0
+        static let postTimeLabelOffset = 8.0
         static let profileImageSize = 40.0
         static let profileImageOffset = 12.0
         static let usernameButtonFontSize = 13.0
@@ -26,6 +31,7 @@ class FeedCell: UICollectionViewCell {
 
     // MARK: - Properties
 
+    private lazy var captionLabel = buildLabel(text: "Caption text goes here ...")
     private lazy var commentsButton = buildSystemButton(
         image: UIImage(named: "comment"),
         action: #selector(commentsTapped)
@@ -35,24 +41,22 @@ class FeedCell: UICollectionViewCell {
         image: UIImage(named: "like_unselected"),
         action: #selector(likeTapped)
     )
+    private lazy var likesLabel = buildLabel(text: "5 likes")
     private lazy var postImageView = buildImageView(with: UIImage(named: "iron-post"))
+    private lazy var postTimeLabel = buildLabel(
+        text: "2 days ago",
+        font: .systemFont(ofSize: Dimension.defaultLabelSize),
+        color: .lightGray
+    )
     private lazy var profileImageView = buildImageView(with: UIImage(named: "iron-profile"))
-//    private lazy var usernameButton = buildSystemButton(
-//        title: "Tony Stark",
-//        action: #selector(usernameTapped)
-//    )
+    private lazy var usernameButton = buildSystemButton(
+        title: "Tony Stark",
+        action: #selector(usernameTapped)
+    )
     private lazy var shareButton = buildSystemButton(
         image: UIImage(named: "share"),
         action: #selector(shareTapped)
     )
-    private lazy var usernameButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Tony Stark", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.titleLabel?.font = .boldSystemFont(ofSize: Dimension.usernameButtonFontSize)
-        btn.addTarget(self, action: #selector(usernameTapped), for: .touchUpInside)
-        return btn
-    }()
 
     // MARK: - Life Time
 
@@ -87,6 +91,17 @@ class FeedCell: UICollectionViewCell {
 // MARK: - Builders
 
 extension FeedCell {
+    private func buildLabel(
+        text: String,
+        font: UIFont = .boldSystemFont(ofSize: Dimension.defaultLabelSize),
+        color: UIColor = .black
+    ) -> UILabel {
+        let lb = UILabel()
+        lb.text = text
+        lb.font = font
+        lb.textColor = color
+        return lb
+    }
     private func buildStackView() -> UIStackView {
         let stk = UIStackView(arrangedSubviews: [
             likeButton,
@@ -130,10 +145,13 @@ extension FeedCell {
 
 extension FeedCell: ViewCode {
     func buildHierarchy() {
+        addSubview(captionLabel)
+        addSubview(interactionStackView)
+        addSubview(likesLabel)
         addSubview(postImageView)
+        addSubview(postTimeLabel)
         addSubview(profileImageView)
         addSubview(usernameButton)
-        addSubview(interactionStackView)
     }
 
     func configViews() {
@@ -141,11 +159,27 @@ extension FeedCell: ViewCode {
     }
     
     func setupConstrains() {
+        captionLabel.snp.makeConstraints { make in
+            make.top
+                .equalTo(likesLabel.snp.bottom)
+                .offset(Dimension.captionLabelOffset)
+            make.horizontalEdges
+                .equalToSuperview()
+                .offset(Dimension.captionLabelOffset)
+        }
         interactionStackView.snp.makeConstraints { make in
             make.top.equalTo(postImageView.snp.bottom)
             make.left.equalToSuperview()
             make.width.equalTo(Dimension.interactionStackWidth)
             make.height.equalTo(Dimension.interactionStackHeight)
+        }
+        likesLabel.snp.makeConstraints { make in
+            make.top
+                .equalTo(interactionStackView.snp.bottom)
+                .offset(Dimension.likesLabelVerticalOffset)
+            make.horizontalEdges
+                .equalToSuperview()
+                .offset(Dimension.likesLabelHorizontalOffset)
         }
         postImageView.snp.makeConstraints { make in
             make.top
@@ -155,6 +189,14 @@ extension FeedCell: ViewCode {
                 .centerX
                 .equalToSuperview()
             make.height.equalTo(postImageView.snp.width)
+        }
+        postTimeLabel.snp.makeConstraints { make in
+            make.top
+                .equalTo(captionLabel.snp.bottom)
+                .offset(Dimension.postTimeLabelOffset)
+            make.horizontalEdges
+                .equalToSuperview()
+                .offset(Dimension.postTimeLabelOffset)
         }
         profileImageView.snp.makeConstraints { make in
             make.top
