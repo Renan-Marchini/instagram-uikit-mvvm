@@ -16,6 +16,7 @@ class FeedCell: UICollectionViewCell {
 
     private enum Dimension {
         static let captionLabelOffset = 8.0
+        static let captionLabelFontSize = 14.0
         static let defaultLabelSize = 12.0
         static let interactionStackHeight = 50.0
         static let interactionStackWidth = 120.0
@@ -31,7 +32,10 @@ class FeedCell: UICollectionViewCell {
 
     // MARK: - Properties
 
-    private lazy var captionLabel = buildLabel(text: "Caption text goes here ...")
+    private lazy var captionLabel = buildLabel(
+        text: "Caption text goes here ...",
+        font: .systemFont(ofSize: Dimension.captionLabelFontSize)
+    )
     private lazy var commentsButton = buildSystemButton(
         image: UIImage(named: "comment"),
         action: #selector(commentsTapped)
