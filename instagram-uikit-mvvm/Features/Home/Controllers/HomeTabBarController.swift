@@ -29,8 +29,9 @@ extension HomeTabBarController: ViewCode {
     }
 
     func configViews() {
+        let layout = UICollectionViewFlowLayout()
         let feed = buildNavigationController(
-            rootController: FeedController(),
+            rootController: FeedController(collectionViewLayout: layout),
             image: UIImage(named: "home_unselected"),
             selectedImage: UIImage(named: "home_selected")
         )
