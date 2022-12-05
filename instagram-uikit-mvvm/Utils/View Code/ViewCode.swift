@@ -18,10 +18,9 @@ protocol ViewCode {
 // MARK: - Implementations
 
 extension ViewCode {
-    func configViews() {}
     func setupUI() {
-        buildHierarchy()
         configViews()
+        buildHierarchy()
         setupConstrains()
     }
 }
