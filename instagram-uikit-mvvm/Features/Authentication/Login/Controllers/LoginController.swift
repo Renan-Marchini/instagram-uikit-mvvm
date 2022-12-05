@@ -11,6 +11,13 @@ import UIKit
 
 class LoginController: UIViewController {
 
+    // MARK: - Color
+
+    private enum Color {
+        static let firstColorBackground = UIColor.systemPurple.cgColor
+        static let secondColorBackground = UIColor.systemBlue.cgColor
+    }
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -23,13 +30,10 @@ class LoginController: UIViewController {
 
 extension LoginController: ViewCode {
     func configViews() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [
-            UIColor.systemPurple.cgColor,
-            UIColor.systemBlue.cgColor
-        ]
-        gradient.frame = view.frame
-        view.layer.addSublayer(gradient)
+        gradientBackground(
+            firstColor: Color.firstColorBackground,
+            secondColor: Color.secondColorBackground
+        )
     }
     func buildHierarchy() {
         
