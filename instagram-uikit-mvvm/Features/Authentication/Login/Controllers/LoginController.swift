@@ -23,7 +23,13 @@ class LoginController: UIViewController {
 
 extension LoginController: ViewCode {
     func configViews() {
-        
+        let gradient = CAGradientLayer()
+        gradient.colors = [
+            UIColor.systemPurple.cgColor,
+            UIColor.systemBlue.cgColor
+        ]
+        gradient.frame = view.frame
+        view.layer.addSublayer(gradient)
     }
     func buildHierarchy() {
         
