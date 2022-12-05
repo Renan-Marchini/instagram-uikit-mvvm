@@ -90,19 +90,7 @@ extension LoginController {
         placeholder: String,
         keyboard: UIKeyboardType = .default
     ) -> UITextField {
-        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(
-            string: placeholder,
-            attributes: [
-                .foregroundColor : UIColor(white: 1.0, alpha: 0.87)
-            ]
-        )
-        tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        tf.borderStyle = .none
-        tf.keyboardAppearance = .dark
-        tf.keyboardType = keyboard
-        tf.textColor = .white
-        tf.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        let tf = WhiteTextField(placeholder: placeholder)
         return tf
     }
 }

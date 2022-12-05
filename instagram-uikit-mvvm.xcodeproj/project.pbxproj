@@ -11,6 +11,7 @@
 		246028E32936B26900F9B1C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 246028E22936B26900F9B1C8 /* SnapKit */; };
 		24B19E66293E65FC00D4E62D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B19E65293E65FC00D4E62D /* LoginController.swift */; };
 		24B19E6B293E687900D4E62D /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B19E6A293E687900D4E62D /* UIViewControllerExtensions.swift */; };
+		24B19E6F293E850C00D4E62D /* WhiteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B19E6E293E850C00D4E62D /* WhiteTextField.swift */; };
 		24B39CB8293626C50049C250 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CB7293626C50049C250 /* SearchController.swift */; };
 		24B39CC12936313C0049C250 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CC02936313C0049C250 /* ImageSelectorController.swift */; };
 		24B39CC3293632FC0049C250 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B39CC2293632FC0049C250 /* NotificationsController.swift */; };
@@ -28,6 +29,7 @@
 		246028DF2936ADB800F9B1C8 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		24B19E65293E65FC00D4E62D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		24B19E6A293E687900D4E62D /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		24B19E6E293E850C00D4E62D /* WhiteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTextField.swift; sourceTree = "<group>"; };
 		24B39CB7293626C50049C250 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		24B39CC02936313C0049C250 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
 		24B39CC2293632FC0049C250 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,22 @@
 				24B19E6A293E687900D4E62D /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		24B19E6C293E84D800D4E62D /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				24B19E6D293E84F600D4E62D /* TextFields */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		24B19E6D293E84F600D4E62D /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				24B19E6E293E850C00D4E62D /* WhiteTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 		24B39CB5293626A80049C250 /* Search */ = {
@@ -178,6 +196,7 @@
 		24BBDA4629355833000938AA /* instagram-uikit-mvvm */ = {
 			isa = PBXGroup;
 			children = (
+				24B19E6C293E84D800D4E62D /* Commons */,
 				24BBDA6029356C9F000938AA /* Features */,
 				24BBDA5B29355CEA000938AA /* Utils */,
 				24BBDA4729355833000938AA /* AppDelegate.swift */,
@@ -330,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24B19E66293E65FC00D4E62D /* LoginController.swift in Sources */,
+				24B19E6F293E850C00D4E62D /* WhiteTextField.swift in Sources */,
 				24BBDA4C29355833000938AA /* HomeTabBarController.swift in Sources */,
 				246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */,
 				24B39CC12936313C0049C250 /* ImageSelectorController.swift in Sources */,
