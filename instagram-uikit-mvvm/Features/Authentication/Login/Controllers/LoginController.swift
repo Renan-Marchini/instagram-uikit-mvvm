@@ -19,12 +19,14 @@ class LoginController: UIViewController {
     }
 
     private enum Dimension {
+        static let logoImageViewHeight = 80.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
     }
 
     // MARK: - Properties
 
+    private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var mainStackView = buildStackView()
 
     // MARK: - Life Cycle
@@ -43,12 +45,19 @@ extension LoginController: ViewCode {
             firstColor: Color.firstColorBackground,
             secondColor: Color.secondColorBackground
         )
+
+        logoImageView.contentMode = .scaleAspectFit
     }
     func buildHierarchy() {
         view.addSubview(mainStackView)
+
+        mainStackView.addArrangedSubview(logoImageView)
     }
     
     func setupConstrains() {
+        logoImageView.snp.makeConstraints { make in
+            make.height.equalTo(Dimension.logoImageViewHeight)
+        }
         mainStackView.snp.makeConstraints { make in
             make.top
                 .equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -59,7 +68,6 @@ extension LoginController: ViewCode {
             make.right
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
-            
         }
     }
 }
