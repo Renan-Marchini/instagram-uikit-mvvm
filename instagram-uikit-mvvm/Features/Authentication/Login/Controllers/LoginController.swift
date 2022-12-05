@@ -20,12 +20,14 @@ class LoginController: UIViewController {
 
     private enum Dimension {
         static let logoImageViewHeight = 80.0
+        static let logoImageViewSpacing = 32.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
     }
 
     // MARK: - Properties
 
+    private lazy var emailTextField = buildTextField(placeholder: "E-mail", keyboard: .emailAddress)
     private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var mainStackView = buildStackView()
 
@@ -47,11 +49,14 @@ extension LoginController: ViewCode {
         )
 
         logoImageView.contentMode = .scaleAspectFit
+
+        mainStackView.setCustomSpacing(Dimension.logoImageViewSpacing, after: logoImageView)
     }
     func buildHierarchy() {
         view.addSubview(mainStackView)
 
         mainStackView.addArrangedSubview(logoImageView)
+        mainStackView.addArrangedSubview(emailTextField)
     }
     
     func setupConstrains() {
@@ -80,5 +85,24 @@ extension LoginController {
         sk.axis = .vertical
         sk.spacing = Dimension.stackViewSpacing
         return sk
+    }
+    private func buildTextField(
+        placeholder: String,
+        keyboard: UIKeyboardType = .default
+    ) -> UITextField {
+        let tf = UITextField()
+        tf.attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [
+                .foregroundColor : UIColor(white: 1.0, alpha: 0.87)
+            ]
+        )
+        tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
+        tf.borderStyle = .none
+        tf.keyboardAppearance = .dark
+        tf.keyboardType = keyboard
+        tf.textColor = .white
+        tf.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        return tf
     }
 }
