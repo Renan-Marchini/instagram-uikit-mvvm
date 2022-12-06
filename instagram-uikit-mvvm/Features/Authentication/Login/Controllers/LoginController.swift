@@ -15,16 +15,12 @@ class LoginController: UIViewController {
 
     private enum Color {
         static let firstColorBackground = UIColor.systemPurple.cgColor
-        static let passwordButtonBackground = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-        static let passwordButtonFont = UIColor.white
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
 
     private enum Dimension {
         static let logoImageViewHeight = 80.0
         static let logoImageViewSpacing = 32.0
-        static let passwordButtonHeight = 50.0
-        static let passwordButtonCornerRadius = 5.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
     }
@@ -91,9 +87,6 @@ extension LoginController: ViewCode {
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
         }
-        passwordButton.snp.makeConstraints { make in
-            make.height.equalTo(Dimension.passwordButtonHeight)
-        }
     }
 }
 
@@ -113,13 +106,9 @@ extension LoginController {
         title: String,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.backgroundColor = Color.passwordButtonBackground
-        btn.layer.cornerRadius = Dimension.passwordButtonCornerRadius
-        btn.setTitle(title, for: .normal)
-        btn.setTitleColor(Color.passwordButtonFont, for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        let btn = PurpleButton()
         btn.addTarget(self, action: action, for: .touchUpInside)
+        btn.setTitle(title, for: .normal)
         return btn
     }
     private func buildStackView() -> UIStackView {
