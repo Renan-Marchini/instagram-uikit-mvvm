@@ -44,6 +44,10 @@ class SignUpController: UIViewController {
         placeholder: "Password",
         isSecureTextEntry: true
     )
+    private lazy var signUpButton = buildPurpleButton(
+        title: "Sign Up",
+        action: #selector(signUpButtonTapped)
+    )
     private lazy var usernameTextField = buildTextField(
         placeholder: "Username"
     )
@@ -67,6 +71,7 @@ extension SignUpController: ViewCode {
         mainStackView.addArrangedSubview(passwordTextField)
         mainStackView.addArrangedSubview(fullnameTextField)
         mainStackView.addArrangedSubview(usernameTextField)
+        mainStackView.addArrangedSubview(signUpButton)
     }
     
     func configViews() {
@@ -105,6 +110,9 @@ extension SignUpController {
     @objc private func pushProfileImageButtonTapped() {
         print("DEBUG - pushProfileImageButton <<<<<<<<<<<")
     }
+    @objc private func signUpButtonTapped() {
+        print("DEBUG - signUpButtonTapped <<<<<<<<<<<<")
+    }
 }
 
 // MARK: - Builders
@@ -119,6 +127,15 @@ extension SignUpController {
         btn.setImage(image, for: .normal)
         btn.tintColor = Color.imageButtonColor
         btn.contentMode = .scaleAspectFill
+        return btn
+    }
+    private func buildPurpleButton(
+        title: String,
+        action: Selector
+    ) -> UIButton {
+        let btn = PurpleButton()
+        btn.addTarget(self, action: action, for: .touchUpInside)
+        btn.setTitle(title, for: .normal)
         return btn
     }
     private func buildStackView() -> UIStackView {
