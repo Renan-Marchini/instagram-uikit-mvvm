@@ -28,11 +28,25 @@ class SignUpController: UIViewController {
 
     // MARK: - Properties
 
+    private lazy var emailTextField = buildTextField(
+        placeholder: "E-mail",
+        keyboard: .emailAddress
+    )
+    private lazy var fullnameTextField = buildTextField(
+        placeholder: "Fullname"
+    )
+    private lazy var mainStackView = buildStackView()
     private lazy var pushProfileImageButton = buildImageButton(
         with: #imageLiteral(resourceName: "upload_photo"),
         action: #selector(pushProfileImageButtonTapped)
     )
-    private lazy var mainStackView = buildStackView()
+    private lazy var passwordTextField = buildTextField(
+        placeholder: "Password",
+        isSecureTextEntry: true
+    )
+    private lazy var usernameTextField = buildTextField(
+        placeholder: "Username"
+    )
 
     // MARK: - Life Cycle
 
@@ -49,12 +63,21 @@ extension SignUpController: ViewCode {
         view.addSubview(mainStackView)
 
         mainStackView.addArrangedSubview(pushProfileImageButton)
+        mainStackView.addArrangedSubview(emailTextField)
+        mainStackView.addArrangedSubview(passwordTextField)
+        mainStackView.addArrangedSubview(fullnameTextField)
+        mainStackView.addArrangedSubview(usernameTextField)
     }
     
     func configViews() {
         gradientBackground(
             firstColor: Color.firstColorBackground,
             secondColor: Color.secondColorBackground
+        )
+
+        mainStackView.setCustomSpacing(
+            Dimension.pushImageButtonSpacing,
+            after: pushProfileImageButton
         )
     }
     
@@ -103,5 +126,15 @@ extension SignUpController {
         sk.axis = .vertical
         sk.spacing = Dimension.stackViewSpacing
         return sk
+    }
+    private func buildTextField(
+        placeholder: String,
+        isSecureTextEntry: Bool = false,
+        keyboard: UIKeyboardType = .default
+    ) -> UITextField {
+        let tf = WhiteTextField(placeholder: placeholder)
+        tf.keyboardType = keyboard
+        tf.isSecureTextEntry = isSecureTextEntry
+        return tf
     }
 }
