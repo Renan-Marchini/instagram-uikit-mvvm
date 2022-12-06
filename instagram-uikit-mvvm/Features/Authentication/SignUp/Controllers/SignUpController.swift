@@ -11,6 +11,12 @@ import UIKit
 
 class SignUpController: UIViewController {
 
+    // MARK: - Attributes
+
+    private enum Color {
+        static let firstColorBackground = UIColor.systemPurple.cgColor
+        static let secondColorBackground = UIColor.systemBlue.cgColor
+    }
 
     // MARK: - Life Cycle
 
@@ -28,6 +34,10 @@ extension SignUpController: ViewCode {
     }
     
     func configViews() {
+        gradientBackground(
+            firstColor: Color.firstColorBackground,
+            secondColor: Color.secondColorBackground
+        )
     }
     
     func setupConstrains() {
