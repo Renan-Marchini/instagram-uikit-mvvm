@@ -15,11 +15,12 @@ class SignUpController: UIViewController {
 
     private enum Color {
         static let firstColorBackground = UIColor.systemPurple.cgColor
+        static let imageButtonColor = UIColor.white
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
     
     private enum Dimension {
-        static let pushImageButtonSize = 80.0
+        static let pushImageButtonSize = 140.0
         static let pushImageButtonSpacing = 32.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
@@ -27,6 +28,10 @@ class SignUpController: UIViewController {
 
     // MARK: - Properties
 
+    private lazy var pushProfileImageButton = buildImageButton(
+        with: #imageLiteral(resourceName: "upload_photo"),
+        action: #selector(pushProfileImageButtonTapped)
+    )
     private lazy var mainStackView = buildStackView()
 
     // MARK: - Life Cycle
@@ -42,6 +47,8 @@ class SignUpController: UIViewController {
 extension SignUpController: ViewCode {
     func buildHierarchy() {
         view.addSubview(mainStackView)
+
+        mainStackView.addArrangedSubview(pushProfileImageButton)
     }
     
     func configViews() {
@@ -49,7 +56,6 @@ extension SignUpController: ViewCode {
             firstColor: Color.firstColorBackground,
             secondColor: Color.secondColorBackground
         )
-        mainStackView.backgroundColor = .systemOrange
     }
     
     func setupConstrains() {
@@ -64,12 +70,34 @@ extension SignUpController: ViewCode {
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
         }
+        pushProfileImageButton.snp.makeConstraints { make in
+            make.height.equalTo(Dimension.pushImageButtonSize)
+        }
+    }
+}
+
+// MARK: - Button Handlers
+
+extension SignUpController {
+    @objc private func pushProfileImageButtonTapped() {
+        print("DEBUG - pushProfileImageButton <<<<<<<<<<<")
     }
 }
 
 // MARK: - Builders
 
 extension SignUpController {
+    private func buildImageButton(
+        with image: UIImage,
+        action: Selector
+    ) -> UIButton {
+        let btn = UIButton(type: .system)
+        btn.addTarget(self, action: action, for: .touchUpInside)
+        btn.setImage(image, for: .normal)
+        btn.tintColor = Color.imageButtonColor
+        btn.contentMode = .scaleAspectFill
+        return btn
+    }
     private func buildStackView() -> UIStackView {
         let sk = UIStackView()
         sk.axis = .vertical
