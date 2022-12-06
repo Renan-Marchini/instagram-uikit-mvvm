@@ -62,6 +62,9 @@ extension LoginController: ViewCode {
         logoImageView.contentMode = .scaleAspectFit
 
         mainStackView.setCustomSpacing(Dimension.logoImageViewSpacing, after: logoImageView)
+
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
     }
     func buildHierarchy() {
         view.addSubview(mainStackView)
