@@ -37,15 +37,10 @@ class WhiteTextField: UITextField {
 
     // MARK: - Life Time
 
-    init(
-        placeholder: String,
-        keyboard: UIKeyboardType = .default
-    ) {
+    init(placeholder: String) {
         self.attributedString = placeholder
 
         super.init(frame: .zero)
-
-        self.keyboardType = keyboard
 
         setupUI()
     }
