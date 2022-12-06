@@ -27,9 +27,16 @@ class LoginController: UIViewController {
 
     // MARK: - Properties
 
-    private lazy var emailTextField = buildTextField(placeholder: "E-mail", keyboard: .emailAddress)
+    private lazy var emailTextField = buildTextField(
+        placeholder: "E-mail",
+        keyboard: .emailAddress
+    )
     private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var mainStackView = buildStackView()
+    private lazy var passwordTextField = buildTextField(
+        placeholder: "Password",
+        isSecureTextEntry: true
+    )
 
     // MARK: - Life Cycle
 
@@ -57,6 +64,7 @@ extension LoginController: ViewCode {
 
         mainStackView.addArrangedSubview(logoImageView)
         mainStackView.addArrangedSubview(emailTextField)
+        mainStackView.addArrangedSubview(passwordTextField)
     }
     
     func setupConstrains() {
@@ -88,9 +96,12 @@ extension LoginController {
     }
     private func buildTextField(
         placeholder: String,
+        isSecureTextEntry: Bool = false,
         keyboard: UIKeyboardType = .default
     ) -> UITextField {
         let tf = WhiteTextField(placeholder: placeholder)
+        tf.keyboardType = keyboard
+        tf.isSecureTextEntry = isSecureTextEntry
         return tf
     }
 }
