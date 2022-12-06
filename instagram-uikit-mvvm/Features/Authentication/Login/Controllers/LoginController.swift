@@ -15,12 +15,16 @@ class LoginController: UIViewController {
 
     private enum Color {
         static let firstColorBackground = UIColor.systemPurple.cgColor
+        static let passwordButtonBackground = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        static let passwordButtonFont = UIColor.white
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
 
     private enum Dimension {
         static let logoImageViewHeight = 80.0
         static let logoImageViewSpacing = 32.0
+        static let passwordButtonHeight = 50.0
+        static let passwordButtonCornerRadius = 5.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
     }
@@ -33,6 +37,10 @@ class LoginController: UIViewController {
     )
     private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var mainStackView = buildStackView()
+    private lazy var passwordButton = buildMainButton(
+        title: "Log in",
+        action: #selector(loginButtonTapped)
+    )
     private lazy var passwordTextField = buildTextField(
         placeholder: "Password",
         isSecureTextEntry: true
@@ -65,6 +73,7 @@ extension LoginController: ViewCode {
         mainStackView.addArrangedSubview(logoImageView)
         mainStackView.addArrangedSubview(emailTextField)
         mainStackView.addArrangedSubview(passwordTextField)
+        mainStackView.addArrangedSubview(passwordButton)
     }
     
     func setupConstrains() {
@@ -82,12 +91,37 @@ extension LoginController: ViewCode {
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
         }
+        passwordButton.snp.makeConstraints { make in
+            make.height.equalTo(Dimension.passwordButtonHeight)
+        }
+    }
+}
+
+// MARK: - Actions
+
+extension LoginController {
+    @objc private func loginButtonTapped() {
+        // TODO: - implement handle
+        print("DEBUG - loginButtonTapped <<<<<<<<<<<<<")
     }
 }
 
 // MARK: - Builders
 
 extension LoginController {
+    private func buildMainButton(
+        title: String,
+        action: Selector
+    ) -> UIButton {
+        let btn = UIButton(type: .system)
+        btn.backgroundColor = Color.passwordButtonBackground
+        btn.layer.cornerRadius = Dimension.passwordButtonCornerRadius
+        btn.setTitle(title, for: .normal)
+        btn.setTitleColor(Color.passwordButtonFont, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.addTarget(self, action: action, for: .touchUpInside)
+        return btn
+    }
     private func buildStackView() -> UIStackView {
         let sk = UIStackView()
         sk.axis = .vertical
