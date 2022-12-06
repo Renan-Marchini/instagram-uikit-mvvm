@@ -33,7 +33,7 @@ class LoginController: UIViewController {
     )
     private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var mainStackView = buildStackView()
-    private lazy var passwordButton = buildMainButton(
+    private lazy var loginButton = buildMainButton(
         title: "Log in",
         action: #selector(loginButtonTapped)
     )
@@ -69,7 +69,7 @@ extension LoginController: ViewCode {
         mainStackView.addArrangedSubview(logoImageView)
         mainStackView.addArrangedSubview(emailTextField)
         mainStackView.addArrangedSubview(passwordTextField)
-        mainStackView.addArrangedSubview(passwordButton)
+        mainStackView.addArrangedSubview(loginButton)
     }
     
     func setupConstrains() {
