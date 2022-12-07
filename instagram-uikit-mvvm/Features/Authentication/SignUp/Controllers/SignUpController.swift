@@ -35,14 +35,19 @@ class SignUpController: UIViewController {
     private lazy var fullnameTextField = buildTextField(
         placeholder: "Fullname"
     )
-    private lazy var mainStackView = buildStackView()
-    private lazy var pushProfileImageButton = buildImageButton(
-        with: #imageLiteral(resourceName: "upload_photo"),
-        action: #selector(pushProfileImageButtonTapped)
+    private lazy var loginButton = buildSystemBoldButton(
+        systemTitle: "Already have an account? ",
+        boldTitle: "Log in.",
+        action: #selector(signUpButtonTapped)
     )
+    private lazy var mainStackView = buildStackView()
     private lazy var passwordTextField = buildTextField(
         placeholder: "Password",
         isSecureTextEntry: true
+    )
+    private lazy var pushProfileImageButton = buildImageButton(
+        with: #imageLiteral(resourceName: "upload_photo"),
+        action: #selector(pushProfileImageButtonTapped)
     )
     private lazy var signUpButton = buildPurpleButton(
         title: "Sign Up",
@@ -65,6 +70,7 @@ class SignUpController: UIViewController {
 extension SignUpController: ViewCode {
     func buildHierarchy() {
         view.addSubview(mainStackView)
+        view.addSubview(loginButton)
 
         mainStackView.addArrangedSubview(pushProfileImageButton)
         mainStackView.addArrangedSubview(emailTextField)
@@ -87,6 +93,13 @@ extension SignUpController: ViewCode {
     }
     
     func setupConstrains() {
+        loginButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        pushProfileImageButton.snp.makeConstraints { make in
+            make.height.equalTo(Dimension.pushImageButtonSize)
+        }
         mainStackView.snp.makeConstraints { make in
             make.top
                 .equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -97,9 +110,6 @@ extension SignUpController: ViewCode {
             make.right
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
-        }
-        pushProfileImageButton.snp.makeConstraints { make in
-            make.height.equalTo(Dimension.pushImageButtonSize)
         }
     }
 }
@@ -143,6 +153,19 @@ extension SignUpController {
         sk.axis = .vertical
         sk.spacing = Dimension.stackViewSpacing
         return sk
+    }
+    private func buildSystemBoldButton(
+        systemTitle: String,
+        boldTitle: String,
+        action: Selector
+    ) -> UIButton {
+        let btn = UIButton(type: .system)
+        btn.attributedSystemBoldTitle(
+            systemTitle: systemTitle,
+            boldTitle: boldTitle
+        )
+        btn.addTarget(self, action: action, for: .touchUpInside)
+        return btn
     }
     private func buildTextField(
         placeholder: String,
