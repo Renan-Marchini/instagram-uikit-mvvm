@@ -123,8 +123,8 @@ extension LoginController {
         print("DEBUG - forgotPasswordButtonTapped <<<<<<<<<<<<<")
     }
     @objc private func signUpButtonTapped() {
-        // TODO: - implement handle
-        print("DEBUG - signUpButtonTapped <<<<<<<<<<<<<")
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
