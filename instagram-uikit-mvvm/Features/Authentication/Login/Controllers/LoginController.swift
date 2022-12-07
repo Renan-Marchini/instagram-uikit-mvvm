@@ -31,15 +31,25 @@ class LoginController: UIViewController {
         placeholder: "E-mail",
         keyboard: .emailAddress
     )
-    private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
+    private lazy var forgotPasswordButton = buildSystemBoldButton(
+        systemTitle: "Forgot your password? ",
+        boldTitle: "Get help signing in.",
+        action: #selector(forgotPasswordButtonTapped)
+    )
     private lazy var mainStackView = buildStackView()
     private lazy var loginButton = buildMainButton(
         title: "Log in",
         action: #selector(loginButtonTapped)
     )
+    private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var passwordTextField = buildTextField(
         placeholder: "Password",
         isSecureTextEntry: true
+    )
+    private lazy var signUpButton = buildSystemBoldButton(
+        systemTitle: "Don't have an account? ",
+        boldTitle: "Sign Up.",
+        action: #selector(signUpButtonTapped)
     )
 
     // MARK: - Life Cycle
@@ -68,16 +78,22 @@ extension LoginController: ViewCode {
     }
     func buildHierarchy() {
         view.addSubview(mainStackView)
+        view.addSubview(signUpButton)
 
         mainStackView.addArrangedSubview(logoImageView)
         mainStackView.addArrangedSubview(emailTextField)
         mainStackView.addArrangedSubview(passwordTextField)
         mainStackView.addArrangedSubview(loginButton)
+        mainStackView.addArrangedSubview(forgotPasswordButton)
     }
     
     func setupConstrains() {
         logoImageView.snp.makeConstraints { make in
             make.height.equalTo(Dimension.logoImageViewHeight)
+        }
+        signUpButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         mainStackView.snp.makeConstraints { make in
             make.top
@@ -89,6 +105,8 @@ extension LoginController: ViewCode {
             make.right
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
+            make.bottom
+                .lessThanOrEqualTo(signUpButton.snp.top)
         }
     }
 }
@@ -99,6 +117,14 @@ extension LoginController {
     @objc private func loginButtonTapped() {
         // TODO: - implement handle
         print("DEBUG - loginButtonTapped <<<<<<<<<<<<<")
+    }
+    @objc private func forgotPasswordButtonTapped() {
+        // TODO: - implement handle
+        print("DEBUG - forgotPasswordButtonTapped <<<<<<<<<<<<<")
+    }
+    @objc private func signUpButtonTapped() {
+        // TODO: - implement handle
+        print("DEBUG - signUpButtonTapped <<<<<<<<<<<<<")
     }
 }
 
@@ -119,6 +145,19 @@ extension LoginController {
         sk.axis = .vertical
         sk.spacing = Dimension.stackViewSpacing
         return sk
+    }
+    private func buildSystemBoldButton(
+        systemTitle: String,
+        boldTitle: String,
+        action: Selector
+    ) -> UIButton {
+        let btn = UIButton(type: .system)
+        btn.attributedSystemBoldTitle(
+            systemTitle: systemTitle,
+            boldTitle: boldTitle
+        )
+        btn.addTarget(self, action: action, for: .touchUpInside)
+        return btn
     }
     private func buildTextField(
         placeholder: String,
