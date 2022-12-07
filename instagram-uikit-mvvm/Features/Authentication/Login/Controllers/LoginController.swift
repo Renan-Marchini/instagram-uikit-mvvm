@@ -49,7 +49,7 @@ class LoginController: UIViewController {
     private lazy var signUpButton = buildSystemBoldButton(
         systemTitle: "Don't have an account? ",
         boldTitle: "Sign Up.",
-        action: #selector(signUpButtonTapped)
+        action: #selector(showSignUpButtonTapped)
     )
 
     // MARK: - Life Cycle
@@ -122,7 +122,7 @@ extension LoginController {
         // TODO: - implement handle
         print("DEBUG - forgotPasswordButtonTapped <<<<<<<<<<<<<")
     }
-    @objc private func signUpButtonTapped() {
+    @objc private func showSignUpButtonTapped() {
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
     }

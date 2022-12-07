@@ -38,7 +38,7 @@ class SignUpController: UIViewController {
     private lazy var loginButton = buildSystemBoldButton(
         systemTitle: "Already have an account? ",
         boldTitle: "Log in.",
-        action: #selector(signUpButtonTapped)
+        action: #selector(showLoginButtonTapped)
     )
     private lazy var mainStackView = buildStackView()
     private lazy var passwordTextField = buildTextField(
@@ -122,6 +122,9 @@ extension SignUpController {
     }
     @objc private func signUpButtonTapped() {
         print("DEBUG - signUpButtonTapped <<<<<<<<<<<<")
+    }
+    @objc private func showLoginButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
