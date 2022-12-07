@@ -1,26 +1,27 @@
 //
-//  LoginController.swift
+//  SignUpController.swift
 //  instagram-uikit-mvvm
 //
-//  Created by Renan Andrusiac on 05/12/22.
+//  Created by Renan Andrusiac on 06/12/22.
 //
 
 import UIKit
 
-// MARK: - LoginController
+// MARK: - SignUpController
 
-class LoginController: UIViewController {
+class SignUpController: UIViewController {
 
-    // MARK: - Enums
+    // MARK: - Attributes
 
     private enum Color {
         static let firstColorBackground = UIColor.systemPurple.cgColor
+        static let imageButtonColor = UIColor.white
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
-
+    
     private enum Dimension {
-        static let logoImageViewHeight = 80.0
-        static let logoImageViewSpacing = 32.0
+        static let pushImageButtonSize = 140.0
+        static let pushImageButtonSpacing = 32.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
     }
@@ -31,25 +32,29 @@ class LoginController: UIViewController {
         placeholder: "E-mail",
         keyboard: .emailAddress
     )
-    private lazy var forgotPasswordButton = buildSystemBoldButton(
-        systemTitle: "Forgot your password? ",
-        boldTitle: "Get help signing in.",
-        action: #selector(forgotPasswordButtonTapped)
+    private lazy var fullnameTextField = buildTextField(
+        placeholder: "Fullname"
+    )
+    private lazy var loginButton = buildSystemBoldButton(
+        systemTitle: "Already have an account? ",
+        boldTitle: "Log in.",
+        action: #selector(showLoginButtonTapped)
     )
     private lazy var mainStackView = buildStackView()
-    private lazy var loginButton = buildMainButton(
-        title: "Log in",
-        action: #selector(loginButtonTapped)
-    )
-    private lazy var logoImageView = UIImageView(image: UIImage(named: "instagram_logo"))
     private lazy var passwordTextField = buildTextField(
         placeholder: "Password",
         isSecureTextEntry: true
     )
-    private lazy var signUpButton = buildSystemBoldButton(
-        systemTitle: "Don't have an account? ",
-        boldTitle: "Sign Up.",
-        action: #selector(showSignUpButtonTapped)
+    private lazy var pushProfileImageButton = buildImageButton(
+        with: #imageLiteral(resourceName: "upload_photo"),
+        action: #selector(pushProfileImageButtonTapped)
+    )
+    private lazy var signUpButton = buildPurpleButton(
+        title: "Sign Up",
+        action: #selector(signUpButtonTapped)
+    )
+    private lazy var usernameTextField = buildTextField(
+        placeholder: "Username"
     )
 
     // MARK: - Life Cycle
@@ -62,38 +67,38 @@ class LoginController: UIViewController {
 
 // MARK: - View Code
 
-extension LoginController: ViewCode {
+extension SignUpController: ViewCode {
+    func buildHierarchy() {
+        view.addSubview(mainStackView)
+        view.addSubview(loginButton)
+
+        mainStackView.addArrangedSubview(pushProfileImageButton)
+        mainStackView.addArrangedSubview(emailTextField)
+        mainStackView.addArrangedSubview(passwordTextField)
+        mainStackView.addArrangedSubview(fullnameTextField)
+        mainStackView.addArrangedSubview(usernameTextField)
+        mainStackView.addArrangedSubview(signUpButton)
+    }
+    
     func configViews() {
         gradientBackground(
             firstColor: Color.firstColorBackground,
             secondColor: Color.secondColorBackground
         )
 
-        logoImageView.contentMode = .scaleAspectFit
-
-        mainStackView.setCustomSpacing(Dimension.logoImageViewSpacing, after: logoImageView)
-
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
-    }
-    func buildHierarchy() {
-        view.addSubview(mainStackView)
-        view.addSubview(signUpButton)
-
-        mainStackView.addArrangedSubview(logoImageView)
-        mainStackView.addArrangedSubview(emailTextField)
-        mainStackView.addArrangedSubview(passwordTextField)
-        mainStackView.addArrangedSubview(loginButton)
-        mainStackView.addArrangedSubview(forgotPasswordButton)
+        mainStackView.setCustomSpacing(
+            Dimension.pushImageButtonSpacing,
+            after: pushProfileImageButton
+        )
     }
     
     func setupConstrains() {
-        logoImageView.snp.makeConstraints { make in
-            make.height.equalTo(Dimension.logoImageViewHeight)
-        }
-        signUpButton.snp.makeConstraints { make in
+        loginButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        pushProfileImageButton.snp.makeConstraints { make in
+            make.height.equalTo(Dimension.pushImageButtonSize)
         }
         mainStackView.snp.makeConstraints { make in
             make.top
@@ -105,33 +110,39 @@ extension LoginController: ViewCode {
             make.right
                 .equalToSuperview()
                 .offset(-Dimension.stackViewOffice)
-            make.bottom
-                .lessThanOrEqualTo(signUpButton.snp.top)
         }
     }
 }
 
-// MARK: - Actions
+// MARK: - Button Handlers
 
-extension LoginController {
-    @objc private func loginButtonTapped() {
-        // TODO: - implement handle
-        print("DEBUG - loginButtonTapped <<<<<<<<<<<<<")
+extension SignUpController {
+    @objc private func pushProfileImageButtonTapped() {
+        print("DEBUG - pushProfileImageButton <<<<<<<<<<<")
     }
-    @objc private func forgotPasswordButtonTapped() {
-        // TODO: - implement handle
-        print("DEBUG - forgotPasswordButtonTapped <<<<<<<<<<<<<")
+    @objc private func signUpButtonTapped() {
+        print("DEBUG - signUpButtonTapped <<<<<<<<<<<<")
     }
-    @objc private func showSignUpButtonTapped() {
-        let controller = SignUpController()
-        navigationController?.pushViewController(controller, animated: true)
+    @objc private func showLoginButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - Builders
 
-extension LoginController {
-    private func buildMainButton(
+extension SignUpController {
+    private func buildImageButton(
+        with image: UIImage,
+        action: Selector
+    ) -> UIButton {
+        let btn = UIButton(type: .system)
+        btn.addTarget(self, action: action, for: .touchUpInside)
+        btn.setImage(image, for: .normal)
+        btn.tintColor = Color.imageButtonColor
+        btn.contentMode = .scaleAspectFill
+        return btn
+    }
+    private func buildPurpleButton(
         title: String,
         action: Selector
     ) -> UIButton {

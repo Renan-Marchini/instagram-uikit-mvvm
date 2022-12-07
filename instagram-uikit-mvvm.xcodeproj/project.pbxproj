@@ -10,6 +10,8 @@
 		246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246028DF2936ADB800F9B1C8 /* FeedCell.swift */; };
 		246028E32936B26900F9B1C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 246028E22936B26900F9B1C8 /* SnapKit */; };
 		24AC8267293F780800C7E5D0 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC8266293F780800C7E5D0 /* PurpleButton.swift */; };
+		24AC826F293FEF3500C7E5D0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC826E293FEF3500C7E5D0 /* SignUpController.swift */; };
+		24AC8272293FFDE400C7E5D0 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC8271293FFDE400C7E5D0 /* UIButtonExtensions.swift */; };
 		24B19E66293E65FC00D4E62D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B19E65293E65FC00D4E62D /* LoginController.swift */; };
 		24B19E6B293E687900D4E62D /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B19E6A293E687900D4E62D /* UIViewControllerExtensions.swift */; };
 		24B19E6F293E850C00D4E62D /* WhiteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B19E6E293E850C00D4E62D /* WhiteTextField.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		246028DF2936ADB800F9B1C8 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		24AC8266293F780800C7E5D0 /* PurpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
+		24AC826E293FEF3500C7E5D0 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		24AC8271293FFDE400C7E5D0 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		24B19E65293E65FC00D4E62D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		24B19E6A293E687900D4E62D /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		24B19E6E293E850C00D4E62D /* WhiteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTextField.swift; sourceTree = "<group>"; };
@@ -75,9 +79,26 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		24AC826C293FEF1900C7E5D0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				24AC826D293FEF2500C7E5D0 /* Controllers */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		24AC826D293FEF2500C7E5D0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24AC826E293FEF3500C7E5D0 /* SignUpController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		24B19E62293E65DB00D4E62D /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				24AC826C293FEF1900C7E5D0 /* SignUp */,
 				24B19E63293E65E900D4E62D /* Login */,
 			);
 			path = Authentication;
@@ -103,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				24B19E6A293E687900D4E62D /* UIViewControllerExtensions.swift */,
+				24AC8271293FFDE400C7E5D0 /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,6 +386,7 @@
 				24BBDA4C29355833000938AA /* HomeTabBarController.swift in Sources */,
 				24AC8267293F780800C7E5D0 /* PurpleButton.swift in Sources */,
 				246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */,
+				24AC826F293FEF3500C7E5D0 /* SignUpController.swift in Sources */,
 				24B39CC12936313C0049C250 /* ImageSelectorController.swift in Sources */,
 				24B19E6B293E687900D4E62D /* UIViewControllerExtensions.swift in Sources */,
 				24B39CB8293626C50049C250 /* SearchController.swift in Sources */,
@@ -371,6 +394,7 @@
 				24BBDA6629356E69000938AA /* FeedController.swift in Sources */,
 				24B39CC5293633450049C250 /* ProfileController.swift in Sources */,
 				24BBDA4829355833000938AA /* AppDelegate.swift in Sources */,
+				24AC8272293FFDE400C7E5D0 /* UIButtonExtensions.swift in Sources */,
 				24B39CC3293632FC0049C250 /* NotificationsController.swift in Sources */,
 				24BBDA4A29355833000938AA /* SceneDelegate.swift in Sources */,
 			);
