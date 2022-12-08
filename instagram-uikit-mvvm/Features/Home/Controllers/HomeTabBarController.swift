@@ -18,14 +18,13 @@ class HomeTabBarController: UITabBarController {
         setupUI()
     }
 
-
 }
 
 // MARK: - View Code
 
 extension HomeTabBarController: ViewCode {
     func buildHierarchy() {
-        
+
     }
 
     func configViews() {
@@ -67,9 +66,9 @@ extension HomeTabBarController: ViewCode {
         tabBar.backgroundColor = .white
         tabBar.tintColor = .black
     }
-    
+
     func setupConstrains() {
-        
+
     }
 }
 
