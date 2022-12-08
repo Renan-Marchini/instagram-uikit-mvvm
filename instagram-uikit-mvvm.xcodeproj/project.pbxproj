@@ -222,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24BBDA5829355836000938AA /* Build configuration list for PBXNativeTarget "instagram-uikit-mvvm" */;
 			buildPhases = (
+				24AC82732940B8C500C7E5D0 /* Run SwiftLint Script */,
 				24BBDA4029355833000938AA /* Sources */,
 				24BBDA4129355833000938AA /* Frameworks */,
 				24BBDA4229355833000938AA /* Resources */,
@@ -285,6 +286,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24AC82732940B8C500C7E5D0 /* Run SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		24BBDA4029355833000938AA /* Sources */ = {
