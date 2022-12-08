@@ -23,7 +23,7 @@ class ProfileController: UIViewController {
 
 extension ProfileController: ViewCode {
     func buildHierarchy() {
-        
+
     }
 
     func configViews() {
@@ -31,6 +31,6 @@ extension ProfileController: ViewCode {
     }
 
     func setupConstrains() {
-        
+
     }
 }

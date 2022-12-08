@@ -30,8 +30,15 @@ extension FeedController {
         return 5
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: reuseIdentifier,
+            for: indexPath
+        ) as? FeedCell
+        else { fatalError("DequeueReusableCell as FeedCell failed while casting") }
         return cell
     }
 }
@@ -39,7 +46,11 @@ extension FeedController {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension FeedController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let width = view.frame.width
         var height: CGFloat = 8 // profileImageView offset
         height += 40 // profileImageView
@@ -55,7 +66,7 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 
 extension FeedController: ViewCode {
     func buildHierarchy() {
-        
+
     }
 
     func configViews() {
@@ -64,6 +75,6 @@ extension FeedController: ViewCode {
     }
 
     func setupConstrains() {
-        
+
     }
 }

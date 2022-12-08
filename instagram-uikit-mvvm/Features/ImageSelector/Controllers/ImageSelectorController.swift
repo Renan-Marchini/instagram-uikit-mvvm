@@ -23,7 +23,7 @@ class ImageSelectorController: UIViewController {
 
 extension ImageSelectorController: ViewCode {
     func buildHierarchy() {
-        
+
     }
 
     func configViews() {
@@ -31,6 +31,6 @@ extension ImageSelectorController: ViewCode {
     }
 
     func setupConstrains() {
-        
+
     }
 }

@@ -74,19 +74,19 @@ class FeedCell: UICollectionViewCell {
     }
 
     // MARK: - Actions
-    
+
     @objc private func commentsTapped() {
         print("DEBUG - commentsTapped <<<<<<<")
     }
-    
+
     @objc private func likeTapped() {
         print("DEBUG - likeTapped <<<<<<<")
     }
-    
+
     @objc private func usernameTapped() {
         print("DEBUG - usernameTapped <<<<<<<")
     }
-    
+
     @objc private func shareTapped() {
         print("DEBUG - shareTapped <<<<<<<")
     }
@@ -100,11 +100,11 @@ extension FeedCell {
         font: UIFont = .boldSystemFont(ofSize: Dimension.defaultLabelSize),
         color: UIColor = .black
     ) -> UILabel {
-        let lb = UILabel()
-        lb.text = text
-        lb.font = font
-        lb.textColor = color
-        return lb
+        let label = UILabel()
+        label.text = text
+        label.font = font
+        label.textColor = color
+        return label
     }
     private func buildStackView() -> UIStackView {
         let stk = UIStackView(arrangedSubviews: [
@@ -121,27 +121,27 @@ extension FeedCell {
         image: UIImage? = nil,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
+        let button = UIButton(type: .system)
         if let title = title {
-            btn.setTitle(title, for: .normal)
-            btn.setTitleColor(.black, for: .normal)
-            btn.titleLabel?.font = .boldSystemFont(ofSize: Dimension.usernameButtonFontSize)
+            button.setTitle(title, for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.titleLabel?.font = .boldSystemFont(ofSize: Dimension.usernameButtonFontSize)
         }
         if let image = image {
-            btn.setImage(image, for: .normal)
-            btn.tintColor = .black
+            button.setImage(image, for: .normal)
+            button.tintColor = .black
         }
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        return btn
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
     }
 
     private func buildImageView(with image: UIImage?) -> UIImageView {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.isUserInteractionEnabled = true
-        iv.image = image
-        return iv
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        imageView.image = image
+        return imageView
     }
 }
 
@@ -161,7 +161,8 @@ extension FeedCell: ViewCode {
     func configViews() {
         profileImageView.layer.cornerRadius = Dimension.profileImageSize / 2
     }
-    
+
+    // swiftlint:disable:next function_body_length
     func setupConstrains() {
         captionLabel.snp.makeConstraints { make in
             make.top
