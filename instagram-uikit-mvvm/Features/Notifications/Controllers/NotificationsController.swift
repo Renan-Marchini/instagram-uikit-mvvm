@@ -23,7 +23,7 @@ class NotificationsController: UIViewController {
 
 extension NotificationsController: ViewCode {
     func buildHierarchy() {
-        
+
     }
 
     func configViews() {
@@ -31,6 +31,6 @@ extension NotificationsController: ViewCode {
     }
 
     func setupConstrains() {
-        
+
     }
 }

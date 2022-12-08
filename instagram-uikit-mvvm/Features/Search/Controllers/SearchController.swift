@@ -23,7 +23,7 @@ class SearchController: UIViewController {
 
 extension SearchController: ViewCode {
     func buildHierarchy() {
-        
+
     }
 
     func configViews() {
@@ -31,6 +31,6 @@ extension SearchController: ViewCode {
     }
 
     func setupConstrains() {
-        
+
     }
 }
