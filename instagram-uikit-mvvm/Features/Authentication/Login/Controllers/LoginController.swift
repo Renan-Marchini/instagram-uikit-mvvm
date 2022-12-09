@@ -59,6 +59,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setObservers()
     }
 }
 
@@ -113,7 +114,19 @@ extension LoginController: ViewCode {
     }
 }
 
-// MARK: - Actions
+// MARK: - Obeservers
+
+extension LoginController {
+    private func setObservers() {
+        setTextFieldsObservers()
+    }
+    private func setTextFieldsObservers() {
+        emailTextField.addTarget(self, action: #selector(textFielTextChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFielTextChanged), for: .editingChanged)
+    }
+}
+
+// MARK: - Handlers
 
 extension LoginController {
     @objc private func loginButtonTapped() {
@@ -123,6 +136,16 @@ extension LoginController {
     @objc private func forgotPasswordButtonTapped() {
         // TODO: - implement handle
         print("DEBUG - forgotPasswordButtonTapped <<<<<<<<<<<<<")
+    }
+    @objc private func textFielTextChanged(sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            viewModel.email = sender.text
+        case passwordTextField:
+            viewModel.password = sender.text
+        default:
+            fatalError("Fatal error - text field sender is not handled in login.")
+        }
     }
     @objc private func showSignUpButtonTapped() {
         let controller = SignUpController()
