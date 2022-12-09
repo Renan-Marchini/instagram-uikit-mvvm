@@ -27,6 +27,8 @@ class LoginController: UIViewController {
 
     // MARK: - Properties
 
+    private var viewModel = LoginViewModel()
+
     private lazy var emailTextField = buildTextField(
         placeholder: "E-mail",
         keyboard: .emailAddress
