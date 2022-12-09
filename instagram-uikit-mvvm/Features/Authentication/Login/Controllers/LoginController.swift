@@ -86,7 +86,7 @@ extension LoginController: ViewCode {
         mainStackView.addArrangedSubview(loginButton)
         mainStackView.addArrangedSubview(forgotPasswordButton)
     }
-    
+
     func setupConstrains() {
         logoImageView.snp.makeConstraints { make in
             make.height.equalTo(Dimension.logoImageViewHeight)
@@ -141,10 +141,10 @@ extension LoginController {
         return btn
     }
     private func buildStackView() -> UIStackView {
-        let sk = UIStackView()
-        sk.axis = .vertical
-        sk.spacing = Dimension.stackViewSpacing
-        return sk
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Dimension.stackViewSpacing
+        return stackView
     }
     private func buildSystemBoldButton(
         systemTitle: String,
@@ -164,9 +164,9 @@ extension LoginController {
         isSecureTextEntry: Bool = false,
         keyboard: UIKeyboardType = .default
     ) -> UITextField {
-        let tf = WhiteTextField(placeholder: placeholder)
-        tf.keyboardType = keyboard
-        tf.isSecureTextEntry = isSecureTextEntry
-        return tf
+        let textField = WhiteTextField(placeholder: placeholder)
+        textField.keyboardType = keyboard
+        textField.isSecureTextEntry = isSecureTextEntry
+        return textField
     }
 }

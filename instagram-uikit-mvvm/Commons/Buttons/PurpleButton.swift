@@ -41,7 +41,7 @@ class PurpleButton: UIButton {
 
 extension PurpleButton: ViewCode {
     func buildHierarchy() {}
-    
+
     func configViews() {
         backgroundColor = Color.buttonBackground
         layer.cornerRadius = Dimension.buttonCornerRadius
@@ -49,7 +49,7 @@ extension PurpleButton: ViewCode {
         titleLabel?.font = UIFont
             .boldSystemFont(ofSize: Dimension.buttonFont)
     }
-    
+
     func setupConstrains() {
         self.snp.makeConstraints { make in
             make.height.equalTo(Dimension.buttonHeight)

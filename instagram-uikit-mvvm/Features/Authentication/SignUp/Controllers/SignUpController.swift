@@ -18,7 +18,7 @@ class SignUpController: UIViewController {
         static let imageButtonColor = UIColor.white
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
-    
+
     private enum Dimension {
         static let pushImageButtonSize = 140.0
         static let pushImageButtonSpacing = 32.0
@@ -79,7 +79,7 @@ extension SignUpController: ViewCode {
         mainStackView.addArrangedSubview(usernameTextField)
         mainStackView.addArrangedSubview(signUpButton)
     }
-    
+
     func configViews() {
         gradientBackground(
             firstColor: Color.firstColorBackground,
@@ -91,7 +91,7 @@ extension SignUpController: ViewCode {
             after: pushProfileImageButton
         )
     }
-    
+
     func setupConstrains() {
         loginButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -152,10 +152,10 @@ extension SignUpController {
         return btn
     }
     private func buildStackView() -> UIStackView {
-        let sk = UIStackView()
-        sk.axis = .vertical
-        sk.spacing = Dimension.stackViewSpacing
-        return sk
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Dimension.stackViewSpacing
+        return stackView
     }
     private func buildSystemBoldButton(
         systemTitle: String,
@@ -175,9 +175,9 @@ extension SignUpController {
         isSecureTextEntry: Bool = false,
         keyboard: UIKeyboardType = .default
     ) -> UITextField {
-        let tf = WhiteTextField(placeholder: placeholder)
-        tf.keyboardType = keyboard
-        tf.isSecureTextEntry = isSecureTextEntry
-        return tf
+        let textField = WhiteTextField(placeholder: placeholder)
+        textField.keyboardType = keyboard
+        textField.isSecureTextEntry = isSecureTextEntry
+        return textField
     }
 }
