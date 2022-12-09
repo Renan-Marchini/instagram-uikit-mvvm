@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		246028E02936ADB800F9B1C8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246028DF2936ADB800F9B1C8 /* FeedCell.swift */; };
 		246028E32936B26900F9B1C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 246028E22936B26900F9B1C8 /* SnapKit */; };
+		24669E1D29435B35003E2D85 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24669E1C29435B35003E2D85 /* LoginViewModel.swift */; };
 		24AC8267293F780800C7E5D0 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC8266293F780800C7E5D0 /* PurpleButton.swift */; };
 		24AC826F293FEF3500C7E5D0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC826E293FEF3500C7E5D0 /* SignUpController.swift */; };
 		24AC8272293FFDE400C7E5D0 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC8271293FFDE400C7E5D0 /* UIButtonExtensions.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		246028DF2936ADB800F9B1C8 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		24669E1C29435B35003E2D85 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		24AC8266293F780800C7E5D0 /* PurpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
 		24AC826E293FEF3500C7E5D0 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		24AC8271293FFDE400C7E5D0 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		24669E1B29435B0E003E2D85 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				24669E1C29435B35003E2D85 /* LoginViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		24AC8265293F77F000C7E5D0 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		24B19E63293E65E900D4E62D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				24669E1B29435B0E003E2D85 /* View Models */,
 				24B19E64293E65ED00D4E62D /* Controllers */,
 			);
 			path = Login;
@@ -414,6 +425,7 @@
 				24B19E6B293E687900D4E62D /* UIViewControllerExtensions.swift in Sources */,
 				24B39CB8293626C50049C250 /* SearchController.swift in Sources */,
 				24BBDA5F29355D4F000938AA /* ViewCode.swift in Sources */,
+				24669E1D29435B35003E2D85 /* LoginViewModel.swift in Sources */,
 				24BBDA6629356E69000938AA /* FeedController.swift in Sources */,
 				24B39CC5293633450049C250 /* ProfileController.swift in Sources */,
 				24BBDA4829355833000938AA /* AppDelegate.swift in Sources */,
