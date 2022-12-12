@@ -121,8 +121,16 @@ extension LoginController {
         setTextFieldsObservers()
     }
     private func setTextFieldsObservers() {
-        emailTextField.addTarget(self, action: #selector(textFielTextChanged), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textFielTextChanged), for: .editingChanged)
+        emailTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        passwordTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
     }
 }
 
@@ -161,11 +169,12 @@ extension LoginController {
         title: String,
         action: Selector
     ) -> UIButton {
-        let btn = PurpleButton()
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        btn.setTitle(title, for: .normal)
-        btn.isEnabled = viewModel.isFormValid
-        return btn
+        let button = PurpleButton()
+        button.isEnabled = viewModel.isFormValid
+
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setTitle(title, for: .normal)
+        return button
     }
     private func buildStackView() -> UIStackView {
         let stackView = UIStackView()
@@ -178,13 +187,13 @@ extension LoginController {
         boldTitle: String,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.attributedSystemBoldTitle(
+        let button = UIButton(type: .system)
+        button.attributedSystemBoldTitle(
             systemTitle: systemTitle,
             boldTitle: boldTitle
         )
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        return btn
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
     }
     private func buildTextField(
         placeholder: String,

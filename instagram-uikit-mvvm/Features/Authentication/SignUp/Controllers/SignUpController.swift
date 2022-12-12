@@ -183,23 +183,23 @@ extension SignUpController {
         with image: UIImage,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        btn.setImage(image, for: .normal)
-        btn.tintColor = Color.imageButtonColor
-        btn.contentMode = .scaleAspectFill
-        return btn
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setImage(image, for: .normal)
+        button.tintColor = Color.imageButtonColor
+        button.contentMode = .scaleAspectFill
+        return button
     }
     private func buildPurpleButton(
         title: String,
         action: Selector
     ) -> UIButton {
-        let btn = PurpleButton()
-        btn.isEnabled = viewModel.isFormValid
+        let button = PurpleButton()
+        button.isEnabled = viewModel.isFormValid
 
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        btn.setTitle(title, for: .normal)
-        return btn
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setTitle(title, for: .normal)
+        return button
     }
     private func buildStackView() -> UIStackView {
         let stackView = UIStackView()
@@ -212,13 +212,13 @@ extension SignUpController {
         boldTitle: String,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.attributedSystemBoldTitle(
+        let button = UIButton(type: .system)
+        button.attributedSystemBoldTitle(
             systemTitle: systemTitle,
             boldTitle: boldTitle
         )
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        return btn
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
     }
     private func buildTextField(
         placeholder: String,
