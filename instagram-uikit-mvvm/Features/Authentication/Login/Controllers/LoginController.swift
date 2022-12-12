@@ -146,6 +146,7 @@ extension LoginController {
         default:
             fatalError("Fatal error - text field sender is not handled in login.")
         }
+        loginButton.isEnabled = viewModel.isFormValid
     }
     @objc private func showSignUpButtonTapped() {
         let controller = SignUpController()
@@ -163,6 +164,7 @@ extension LoginController {
         let btn = PurpleButton()
         btn.addTarget(self, action: action, for: .touchUpInside)
         btn.setTitle(title, for: .normal)
+        btn.isEnabled = viewModel.isFormValid
         return btn
     }
     private func buildStackView() -> UIStackView {
