@@ -27,6 +27,8 @@ class LoginController: UIViewController {
 
     // MARK: - Properties
 
+    private var viewModel = LoginViewModel()
+
     private lazy var emailTextField = buildTextField(
         placeholder: "E-mail",
         keyboard: .emailAddress
@@ -57,6 +59,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setObservers()
     }
 }
 
@@ -86,7 +89,7 @@ extension LoginController: ViewCode {
         mainStackView.addArrangedSubview(loginButton)
         mainStackView.addArrangedSubview(forgotPasswordButton)
     }
-    
+
     func setupConstrains() {
         logoImageView.snp.makeConstraints { make in
             make.height.equalTo(Dimension.logoImageViewHeight)
@@ -111,7 +114,27 @@ extension LoginController: ViewCode {
     }
 }
 
-// MARK: - Actions
+// MARK: - Obeservers
+
+extension LoginController {
+    private func setObservers() {
+        setTextFieldsObservers()
+    }
+    private func setTextFieldsObservers() {
+        emailTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        passwordTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+    }
+}
+
+// MARK: - Handlers
 
 extension LoginController {
     @objc private func loginButtonTapped() {
@@ -121,6 +144,17 @@ extension LoginController {
     @objc private func forgotPasswordButtonTapped() {
         // TODO: - implement handle
         print("DEBUG - forgotPasswordButtonTapped <<<<<<<<<<<<<")
+    }
+    @objc private func textFielTextChanged(sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            viewModel.email = sender.text
+        case passwordTextField:
+            viewModel.password = sender.text
+        default:
+            fatalError("Fatal error - text field sender is not handled in login.")
+        }
+        loginButton.isEnabled = viewModel.isFormValid
     }
     @objc private func showSignUpButtonTapped() {
         let controller = SignUpController()
@@ -135,38 +169,40 @@ extension LoginController {
         title: String,
         action: Selector
     ) -> UIButton {
-        let btn = PurpleButton()
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        btn.setTitle(title, for: .normal)
-        return btn
+        let button = PurpleButton()
+        button.isEnabled = viewModel.isFormValid
+
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setTitle(title, for: .normal)
+        return button
     }
     private func buildStackView() -> UIStackView {
-        let sk = UIStackView()
-        sk.axis = .vertical
-        sk.spacing = Dimension.stackViewSpacing
-        return sk
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Dimension.stackViewSpacing
+        return stackView
     }
     private func buildSystemBoldButton(
         systemTitle: String,
         boldTitle: String,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.attributedSystemBoldTitle(
+        let button = UIButton(type: .system)
+        button.attributedSystemBoldTitle(
             systemTitle: systemTitle,
             boldTitle: boldTitle
         )
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        return btn
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
     }
     private func buildTextField(
         placeholder: String,
         isSecureTextEntry: Bool = false,
         keyboard: UIKeyboardType = .default
     ) -> UITextField {
-        let tf = WhiteTextField(placeholder: placeholder)
-        tf.keyboardType = keyboard
-        tf.isSecureTextEntry = isSecureTextEntry
-        return tf
+        let textField = WhiteTextField(placeholder: placeholder)
+        textField.keyboardType = keyboard
+        textField.isSecureTextEntry = isSecureTextEntry
+        return textField
     }
 }

@@ -44,7 +44,7 @@ class WhiteTextField: UITextField {
 
         setupUI()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,12 +55,12 @@ class WhiteTextField: UITextField {
 extension WhiteTextField: ViewCode {
     func buildHierarchy() {
     }
-    
+
     func configViews() {
         attributedPlaceholder = NSAttributedString(
             string: attributedString,
             attributes: [
-                .foregroundColor : Color.placeholderFontColor
+                .foregroundColor: Color.placeholderFontColor
             ]
         )
         backgroundColor = Color.backgroundColor
@@ -70,7 +70,7 @@ extension WhiteTextField: ViewCode {
         leftViewMode = .always
         textColor = Color.textFontColor
     }
-    
+
     func setupConstrains() {
         leftSpacer.snp.makeConstraints { make in
             make.width.equalTo(Dimension.leftSpace)

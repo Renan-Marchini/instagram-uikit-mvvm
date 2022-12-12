@@ -18,7 +18,7 @@ class SignUpController: UIViewController {
         static let imageButtonColor = UIColor.white
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
-    
+
     private enum Dimension {
         static let pushImageButtonSize = 140.0
         static let pushImageButtonSpacing = 32.0
@@ -27,6 +27,8 @@ class SignUpController: UIViewController {
     }
 
     // MARK: - Properties
+
+    private var viewModel = SignUpViewModel()
 
     private lazy var emailTextField = buildTextField(
         placeholder: "E-mail",
@@ -62,6 +64,7 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setObservers()
     }
 }
 
@@ -79,7 +82,7 @@ extension SignUpController: ViewCode {
         mainStackView.addArrangedSubview(usernameTextField)
         mainStackView.addArrangedSubview(signUpButton)
     }
-    
+
     func configViews() {
         gradientBackground(
             firstColor: Color.firstColorBackground,
@@ -91,7 +94,7 @@ extension SignUpController: ViewCode {
             after: pushProfileImageButton
         )
     }
-    
+
     func setupConstrains() {
         loginButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -114,7 +117,37 @@ extension SignUpController: ViewCode {
     }
 }
 
-// MARK: - Button Handlers
+// MARK: - Obeservers
+
+extension SignUpController {
+    private func setObservers() {
+        setTextFieldsObservers()
+    }
+    private func setTextFieldsObservers() {
+        emailTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        fullnameTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        passwordTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        usernameTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+    }
+}
+
+// MARK: - Buttons' Handlers
 
 extension SignUpController {
     @objc private func pushProfileImageButtonTapped() {
@@ -126,6 +159,21 @@ extension SignUpController {
     @objc private func showLoginButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
+    @objc private func textFielTextChanged(sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            viewModel.email = sender.text
+        case fullnameTextField:
+            viewModel.fullname = sender.text
+        case passwordTextField:
+            viewModel.password = sender.text
+        case usernameTextField:
+            viewModel.username = sender.text
+        default:
+            fatalError("Fatal error - text field sender is not handled in login.")
+        }
+        signUpButton.isEnabled = viewModel.isFormValid
+    }
 }
 
 // MARK: - Builders
@@ -135,49 +183,51 @@ extension SignUpController {
         with image: UIImage,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        btn.setImage(image, for: .normal)
-        btn.tintColor = Color.imageButtonColor
-        btn.contentMode = .scaleAspectFill
-        return btn
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setImage(image, for: .normal)
+        button.tintColor = Color.imageButtonColor
+        button.contentMode = .scaleAspectFill
+        return button
     }
     private func buildPurpleButton(
         title: String,
         action: Selector
     ) -> UIButton {
-        let btn = PurpleButton()
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        btn.setTitle(title, for: .normal)
-        return btn
+        let button = PurpleButton()
+        button.isEnabled = viewModel.isFormValid
+
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setTitle(title, for: .normal)
+        return button
     }
     private func buildStackView() -> UIStackView {
-        let sk = UIStackView()
-        sk.axis = .vertical
-        sk.spacing = Dimension.stackViewSpacing
-        return sk
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Dimension.stackViewSpacing
+        return stackView
     }
     private func buildSystemBoldButton(
         systemTitle: String,
         boldTitle: String,
         action: Selector
     ) -> UIButton {
-        let btn = UIButton(type: .system)
-        btn.attributedSystemBoldTitle(
+        let button = UIButton(type: .system)
+        button.attributedSystemBoldTitle(
             systemTitle: systemTitle,
             boldTitle: boldTitle
         )
-        btn.addTarget(self, action: action, for: .touchUpInside)
-        return btn
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
     }
     private func buildTextField(
         placeholder: String,
         isSecureTextEntry: Bool = false,
         keyboard: UIKeyboardType = .default
     ) -> UITextField {
-        let tf = WhiteTextField(placeholder: placeholder)
-        tf.keyboardType = keyboard
-        tf.isSecureTextEntry = isSecureTextEntry
-        return tf
+        let textField = WhiteTextField(placeholder: placeholder)
+        textField.keyboardType = keyboard
+        textField.isSecureTextEntry = isSecureTextEntry
+        return textField
     }
 }
