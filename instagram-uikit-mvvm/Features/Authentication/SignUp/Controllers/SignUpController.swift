@@ -28,6 +28,8 @@ class SignUpController: UIViewController {
 
     // MARK: - Properties
 
+    private var viewModel = SignUpViewModel()
+
     private lazy var emailTextField = buildTextField(
         placeholder: "E-mail",
         keyboard: .emailAddress
@@ -62,6 +64,7 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setObservers()
     }
 }
 
@@ -114,7 +117,37 @@ extension SignUpController: ViewCode {
     }
 }
 
-// MARK: - Button Handlers
+// MARK: - Obeservers
+
+extension SignUpController {
+    private func setObservers() {
+        setTextFieldsObservers()
+    }
+    private func setTextFieldsObservers() {
+        emailTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        fullnameTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        passwordTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+        usernameTextField.addTarget(
+            self,
+            action: #selector(textFielTextChanged),
+            for: .editingChanged
+        )
+    }
+}
+
+// MARK: - Buttons' Handlers
 
 extension SignUpController {
     @objc private func pushProfileImageButtonTapped() {
@@ -125,6 +158,21 @@ extension SignUpController {
     }
     @objc private func showLoginButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    @objc private func textFielTextChanged(sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            viewModel.email = sender.text
+        case fullnameTextField:
+            viewModel.fullname = sender.text
+        case passwordTextField:
+            viewModel.password = sender.text
+        case usernameTextField:
+            viewModel.username = sender.text
+        default:
+            fatalError("Fatal error - text field sender is not handled in login.")
+        }
+        signUpButton.isEnabled = viewModel.isFormValid
     }
 }
 
@@ -147,6 +195,8 @@ extension SignUpController {
         action: Selector
     ) -> UIButton {
         let btn = PurpleButton()
+        btn.isEnabled = viewModel.isFormValid
+
         btn.addTarget(self, action: action, for: .touchUpInside)
         btn.setTitle(title, for: .normal)
         return btn
