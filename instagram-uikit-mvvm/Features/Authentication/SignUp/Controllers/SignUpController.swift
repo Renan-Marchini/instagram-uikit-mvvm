@@ -20,8 +20,8 @@ class SignUpController: UIViewController {
     }
 
     private enum Dimension {
-        static let pushImageButtonSize = 140.0
-        static let pushImageButtonSpacing = 32.0
+        static let profilePhotoPickerButtonSize = 140.0
+        static let profilePhotoPickerButtonSpacing = 32.0
         static let stackViewSpacing = 20.0
         static let stackViewOffice = 32.0
     }
@@ -47,10 +47,11 @@ class SignUpController: UIViewController {
         placeholder: "Password",
         isSecureTextEntry: true
     )
-    private lazy var pushProfileImageButton = buildImageButton(
+    private lazy var profilePhotoPickerButton = buildImageButton(
         with: #imageLiteral(resourceName: "upload_photo"),
-        action: #selector(pushProfileImageButtonTapped)
+        action: #selector(profilePhotoPickerButtonTapped)
     )
+    private lazy var profilePhotoPickerView = UIView()
     private lazy var signUpButton = buildPurpleButton(
         title: "Sign Up",
         action: #selector(signUpButtonTapped)
@@ -75,12 +76,14 @@ extension SignUpController: ViewCode {
         view.addSubview(mainStackView)
         view.addSubview(loginButton)
 
-        mainStackView.addArrangedSubview(pushProfileImageButton)
+        mainStackView.addArrangedSubview(profilePhotoPickerView)
         mainStackView.addArrangedSubview(emailTextField)
         mainStackView.addArrangedSubview(passwordTextField)
         mainStackView.addArrangedSubview(fullnameTextField)
         mainStackView.addArrangedSubview(usernameTextField)
         mainStackView.addArrangedSubview(signUpButton)
+
+        profilePhotoPickerView.addSubview(profilePhotoPickerButton)
     }
 
     func configViews() {
@@ -90,8 +93,8 @@ extension SignUpController: ViewCode {
         )
 
         mainStackView.setCustomSpacing(
-            Dimension.pushImageButtonSpacing,
-            after: pushProfileImageButton
+            Dimension.profilePhotoPickerButtonSpacing,
+            after: profilePhotoPickerView
         )
     }
 
@@ -100,8 +103,13 @@ extension SignUpController: ViewCode {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-        pushProfileImageButton.snp.makeConstraints { make in
-            make.height.equalTo(Dimension.pushImageButtonSize)
+        profilePhotoPickerButton.snp.makeConstraints { make in
+            make.width.equalTo(Dimension.profilePhotoPickerButtonSize)
+            make.height.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        profilePhotoPickerView.snp.makeConstraints { make in
+            make.height.equalTo(Dimension.profilePhotoPickerButtonSize)
         }
         mainStackView.snp.makeConstraints { make in
             make.top
