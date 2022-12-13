@@ -16,10 +16,12 @@ class SignUpController: UIViewController {
     private enum Color {
         static let firstColorBackground = UIColor.systemPurple.cgColor
         static let imageButtonColor = UIColor.white
+        static let profileButtonBorder = UIColor.white.cgColor
         static let secondColorBackground = UIColor.systemBlue.cgColor
     }
 
     private enum Dimension {
+        static let profilePhotoPickerButtonBorder = 1.44
         static let profilePhotoPickerButtonSize = 140.0
         static let profilePhotoPickerButtonSpacing = 32.0
         static let stackViewSpacing = 20.0
@@ -158,8 +160,12 @@ extension SignUpController {
 // MARK: - Buttons' Handlers
 
 extension SignUpController {
-    @objc private func pushProfileImageButtonTapped() {
-        print("DEBUG - pushProfileImageButton <<<<<<<<<<<")
+    @objc private func profilePhotoPickerButtonTapped() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+
+        present(picker, animated: true)
     }
     @objc private func signUpButtonTapped() {
         print("DEBUG - signUpButtonTapped <<<<<<<<<<<<")
@@ -237,5 +243,26 @@ extension SignUpController {
         textField.keyboardType = keyboard
         textField.isSecureTextEntry = isSecureTextEntry
         return textField
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+
+extension SignUpController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        guard let profileImage = info[.editedImage] as? UIImage else { return }
+
+        profilePhotoPickerButton.layer.cornerRadius = Dimension.profilePhotoPickerButtonSize / 2
+        profilePhotoPickerButton.layer.masksToBounds = true
+        profilePhotoPickerButton.layer.borderColor = Color.profileButtonBorder
+        profilePhotoPickerButton.layer.borderWidth = Dimension.profilePhotoPickerButtonBorder
+        profilePhotoPickerButton.setImage(
+            profileImage.withRenderingMode(.alwaysOriginal),
+            for: .normal
+        )
+        self.dismiss(animated: true)
     }
 }
